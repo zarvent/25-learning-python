@@ -14,3 +14,4 @@ def maps(a):
         # Ahora necesitamos "guardar" el nuevo valor * 2
         lista_resultado.append(number * 2)
     return lista_resultado
+
