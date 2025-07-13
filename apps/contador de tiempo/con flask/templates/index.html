@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Tiempo Web</title>
+    <style>
+        /* Estilos CSS para un look moderno y limpio */
+        body {
+            font-family: 'Helvetica', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f7f6;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        label {
+            text-align: right;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input {
+            font-size: 1em;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            grid-column: 1 / -1;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.4em;
+            font-weight: bold;
+            border: 2px solid;
+        }
+
+        .exito {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .error {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Conversor a Milisegundos</h1>
+        <p>Introduce un tiempo para calcular.</p>
+
+        <form method="POST">
+            <label for="horas">Horas (h):</label>
+            <input type="number" id="horas" name="horas" required min="0" max="23"
+                value="{{ request.form.get('horas', '') }}">
+
+            <label for="minutos">Minutos (m):</label>
+            <input type="number" id="minutos" name="minutos" required min="0" max="59"
+                value="{{ request.form.get('minutos', '') }}">
+
+            <label for="segundos">Segundos (s):</label>
+            <input type="number" id="segundos" name="segundos" required min="0" max="59"
+                value="{{ request.form.get('segundos', '') }}">
+
+            <button type="submit">Calcular</button>
+        </form>
+
+        {% if resultado %}
+        <div class="resultado exito">
+            {{ resultado }}
+        </div>
+        {% endif %}
+        {% if error %}
+        <div class="resultado error">
+            {{ error }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>

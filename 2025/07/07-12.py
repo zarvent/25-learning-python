@@ -22,4 +22,4 @@ print(" Hola, bienvenido al invertidor de palabras 🤓 \n")
 textoinvertido = input("introduce la palabra que quieres invertir: \n")
 
 print("\n✨ ¡Listo! ✨")
-print(invertir_cadenas(textoinvertido))
+print(invertir_cadenas(textoinvertido))``
